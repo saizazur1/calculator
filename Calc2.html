@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
+      body {
+        background-color: rgb(168, 168, 168);
+      }
       button {
         padding: 10px;
         font-size: 16px;
@@ -17,21 +20,27 @@
       }
       .displayStyle {
         display: flex;
+        flex-direction: column;
         border: solid 1px #eee;
         padding: 20px;
         margin-bottom: 10px;
         font-size: 24px;
-        background-color: #fff;
-        justify-content: flex-end;
+        background-color: rgb(46, 0, 0);
+        color: rgb(221, 221, 5);
+        justify-content: flex-start;
+        align-items: flex-end;
         border-radius: 8px;
         height: 69px;
+      }
+      .displayStyleInner {
+        margin-bottom: 10px;
       }
       .container {
         padding: 20px;
         width: 300px;
         border: solid 1px #eee;
         border-radius: 8px;
-        background-color: aliceblue;
+        background-color: rgb(29, 39, 48);
         margin: 0 auto;
       }
       .val {
@@ -49,9 +58,14 @@
   <body style="padding: 30px">
     <div class="container">
       <div class="displayStyle">
-        <span id="val_1" class="val"> </span
-        ><span id="operatorSign" class="val"> </span
-        ><span id="val_2" class="val"> </span>
+        <div class="displayStyleInner">
+          <span id="val_1" class="val"> </span
+          ><span id="operatorSign" class="val"> </span
+          ><span id="val_2" class="val"> </span>
+        </div>
+        <div class="displayStyleInner">
+          <span id="totalAnswer" class="val"></span>
+        </div>
       </div>
       <div class="number-row">
         <button onClick="num('1')">1</button>
@@ -70,7 +84,6 @@
       </div>
       <div class="number-row">
         <button onClick="num('0')">0</button>
-        <button onClick="totalAns()">=</button>
       </div>
       <div class="number-row">
         <button onClick="operators('+')">+</button>
@@ -80,10 +93,8 @@
       </div>
       <div class="number-row">
         <button onClick="clearArray()">CA</button>
+        <button onClick="totalAns()">=</button>
       </div>
-    </div>
-    <div class="displayStyle">
-      <span id="totalAnswer" class="val"></span>
     </div>
 
     <script>
