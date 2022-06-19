@@ -24,6 +24,7 @@
         background-color: #fff;
         justify-content: flex-end;
         border-radius: 8px;
+        height: 69px;
       }
       .container {
         padding: 20px;
@@ -78,7 +79,7 @@
         <button onClick="operators('/')">/</button>
       </div>
       <div class="number-row">
-        <button onClick="clear()">CA</button>
+        <button onClick="clearArray()">CA</button>
       </div>
     </div>
     <div class="displayStyle">
@@ -109,14 +110,6 @@
         }
       }
 
-      function clear() {
-        console.log(val1.innerHTML);
-        if (val1.innerHTML || val2.innerHTML || operator.innerHTML !== " ") {
-          val1.innerHTML = " ";
-          val2.innerHTML = " ";
-          operator.innerHTML = " ";
-        }
-      }
       function operators(sign) {
         operator.innerHTML = sign;
       }
@@ -138,6 +131,17 @@
         } else if (operator.innerHTML === "/") {
           total = finalVal1 / finalVal2;
           document.getElementById("totalAnswer").innerHTML = total;
+        }
+      }
+
+      function clearArray() {
+        if (val1Array.length > 0) {
+          val1Array.length = 0;
+          val2Array.length = 0;
+          val1.innerHTML = val1Array;
+          val2.innerHTML = val2Array;
+          operator.innerHTML = " ";
+          document.getElementById("totalAnswer").innerHTML = " ";
         }
       }
     </script>
