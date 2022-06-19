@@ -127,16 +127,16 @@
         let finalVal2 = parseInt(val2.innerHTML);
         let total;
 
-        if (operator.innerHTML === "+") {
+        if (operator.innerHTML === "+" && val2Array.length > 0) {
           total = finalVal1 + finalVal2;
           document.getElementById("totalAnswer").innerHTML = total;
-        } else if (operator.innerHTML === "-") {
+        } else if (operator.innerHTML === "-" && val2Array.length > 0) {
           total = finalVal1 - finalVal2;
           document.getElementById("totalAnswer").innerHTML = total;
-        } else if (operator.innerHTML === "*") {
+        } else if (operator.innerHTML === "*" && val2Array.length > 0) {
           total = finalVal1 * finalVal2;
           document.getElementById("totalAnswer").innerHTML = total;
-        } else if (operator.innerHTML === "/") {
+        } else if (operator.innerHTML === "/" && val2Array.length > 0) {
           total = finalVal1 / finalVal2;
           document.getElementById("totalAnswer").innerHTML = total;
         }
