@@ -13,7 +13,7 @@
         padding: 10px;
         font-size: 16px;
         width: 100px;
-        margin: 0px 5px;
+        margin: 0px 10px;
         border-radius: 8px;
         border: solid 1px rgbnum(75, 75, 75, 0.445);
         cursor: pointer;
@@ -50,7 +50,10 @@
         display: flex;
         flex-direction: row;
         justify-content: space-around;
-        margin-bottom: 5px;
+        margin-bottom: 15px;
+      }
+      .signsStyle {
+        font-size: 20px;
       }
     </style>
   </head>
@@ -68,6 +71,12 @@
         </div>
       </div>
       <div class="number-row">
+        <button onClick="operators('+')" class="signsStyle">+</button>
+        <button onClick="operators('-')" class="signsStyle">-</button>
+        <button onClick="operators('x')" class="signsStyle">x</button>
+        <button onClick="operators('/')" class="signsStyle">/</button>
+      </div>
+      <div class="number-row">
         <button onClick="num('1')">1</button>
         <button onClick="num('2')">2</button>
         <button onClick="num('3')">3</button>
@@ -82,17 +91,10 @@
         <button onClick="num('8')">8</button>
         <button onClick="num('9')">9</button>
       </div>
-      <div class="number-row">
-        <button onClick="num('0')">0</button>
-      </div>
-      <div class="number-row">
-        <button onClick="operators('+')">+</button>
-        <button onClick="operators('-')">-</button>
-        <button onClick="operators('*')">*</button>
-        <button onClick="operators('/')">/</button>
-      </div>
+
       <div class="number-row">
         <button onClick="clearArray()">CA</button>
+        <button onClick="num('0')">0</button>
         <button onClick="totalAns()">=</button>
       </div>
     </div>
@@ -133,7 +135,7 @@
         } else if (operator.innerHTML === "-" && val2Array.length > 0) {
           total = finalVal1 - finalVal2;
           document.getElementById("totalAnswer").innerHTML = total;
-        } else if (operator.innerHTML === "*" && val2Array.length > 0) {
+        } else if (operator.innerHTML === "x" && val2Array.length > 0) {
           total = finalVal1 * finalVal2;
           document.getElementById("totalAnswer").innerHTML = total;
         } else if (operator.innerHTML === "/" && val2Array.length > 0) {
