@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Changing the Image</h1>
+
+    <!-- First we put up an umage with an id -->
+    <img src="sar.PNG" id="myImage" width="400px" height="400px" />
+
+    <!-- then we create a button which performs a function when clicked -->
+    <button type="button" onclick="changeImage()">Button</button>
+
+    <script>
+      // creating a function changeImage()
+      const changeImage=()=> {
+        // creating a variable Image which stores the img element VIA ID
+        const image = document.getElementById("myImage");
+
+        //putting a condition to check if the Image variable matches a certain image source
+        if (image.getAttribute("src") === "colorbottle.gif") {
+          // if the image matches the condition, change the source to sar.png
+          image.setAttribute("src") = "sar.PNG"
+        } else {
+          //if the image source is other than the condition then change it to Colorbottle.gif
+          image.src = "colorbottle.gif";
+        }
+      }
+    </script>
+  </body>
+</html>

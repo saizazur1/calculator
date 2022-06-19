@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      button {
+        padding: 10px;
+        font-size: 16px;
+        width: 100px;
+        margin: 0px 5px;
+        border-radius: 8px;
+        border: solid 1px rgbnum(75, 75, 75, 0.445);
+        cursor: pointer;
+      }
+      .displayStyle {
+        display: flex;
+        border: solid 1px #eee;
+        padding: 20px;
+        margin-bottom: 10px;
+        font-size: 24px;
+        background-color: #fff;
+        justify-content: flex-end;
+        border-radius: 8px;
+      }
+      .container {
+        padding: 20px;
+        width: 300px;
+        border: solid 1px #eee;
+        border-radius: 8px;
+        background-color: aliceblue;
+        margin: 0 auto;
+      }
+      .val {
+        margin-right: 10px;
+      }
+      .number-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        margin-bottom: 5px;
+      }
+    </style>
+  </head>
+
+  <body style="padding: 30px">
+    <div class="container">
+      <div class="displayStyle">
+        <span id="val_1" class="val"> </span
+        ><span id="operatorSign" class="val"> </span
+        ><span id="val_2" class="val"> </span>
+      </div>
+      <div class="number-row">
+        <button onClick="num('1')">1</button>
+        <button onClick="num('2')">2</button>
+        <button onClick="num('3')">3</button>
+      </div>
+      <div class="number-row">
+        <button onClick="num('4')">4</button>
+        <button onClick="num('5')">5</button>
+        <button onClick="num('6')">6</button>
+      </div>
+      <div class="number-row">
+        <button onClick="num('7')">7</button>
+        <button onClick="num('8')">8</button>
+        <button onClick="num('9')">9</button>
+      </div>
+      <div class="number-row">
+        <button onClick="num('0')">0</button>
+        <button onClick="totalAns()">=</button>
+      </div>
+      <div class="number-row">
+        <button onClick="operators('+')">+</button>
+        <button onClick="operators('-')">-</button>
+        <button onClick="operators('*')">*</button>
+        <button onClick="operators('/')">/</button>
+      </div>
+      <div class="number-row">
+        <button onClick="clear()">CA</button>
+      </div>
+    </div>
+    <div class="displayStyle">
+      <span id="totalAnswer" class="val"></span>
+    </div>
+
+    <script>
+      let val1 = document.getElementById("val_1");
+      let val2 = document.getElementById("val_2");
+      let operator = document.getElementById("operatorSign");
+
+      let val1Array = [];
+      val1.innerHTML = val1Array;
+
+      let val2Array = [];
+      val2.innerHTML = val2Array;
+
+      console.log(val1Array);
+      console.log(val2Array);
+
+      function num(innerNumber) {
+        if (operator.innerHTML === " ") {
+          val1Array.push(innerNumber);
+          val1.innerHTML = val1Array.join("");
+        } else if (val1.innerHTML && operator.innerHTML !== " ") {
+          val2Array.push(innerNumber);
+          val2.innerHTML = val2Array.join("");
+        }
+      }
+
+      function clear() {
+        console.log(val1.innerHTML);
+        if (val1.innerHTML || val2.innerHTML || operator.innerHTML !== " ") {
+          val1.innerHTML = " ";
+          val2.innerHTML = " ";
+          operator.innerHTML = " ";
+        }
+      }
+      function operators(sign) {
+        operator.innerHTML = sign;
+      }
+
+      function totalAns() {
+        let finalVal1 = parseInt(val1.innerHTML);
+        let finalVal2 = parseInt(val2.innerHTML);
+        let total;
+
+        if (operator.innerHTML === "+") {
+          total = finalVal1 + finalVal2;
+          document.getElementById("totalAnswer").innerHTML = total;
+        } else if (operator.innerHTML === "-") {
+          total = finalVal1 - finalVal2;
+          document.getElementById("totalAnswer").innerHTML = total;
+        } else if (operator.innerHTML === "*") {
+          total = finalVal1 * finalVal2;
+          document.getElementById("totalAnswer").innerHTML = total;
+        } else if (operator.innerHTML === "/") {
+          total = finalVal1 / finalVal2;
+          document.getElementById("totalAnswer").innerHTML = total;
+        }
+      }
+    </script>
+  </body>
+</html>
