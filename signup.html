@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Signup form</h1>
+    <form>
+      <input
+        type="text"
+        label="Username"
+        placeholder="Username"
+        name="username"
+        id="username"
+        pattern="[A-Za-z0-9]+"
+        required
+      />
+      <input
+        type="email"
+        label="Email"
+        placeholder="Email"
+        name="email"
+        required
+        id="email"
+      />
+      <input
+        type="password"
+        label="Password"
+        placeholder="Password"
+        name="password"
+        id="password"
+        required
+        pattern="[A-Za-z0-9]{7+}"
+      />
+      <input type="submit" value="signup" onclick="clicked()" />
+    </form>
+
+    <script>
+      function clicked() {
+        console.log(document.getE);
+      }
+    </script>
+  </body>
+</html>
