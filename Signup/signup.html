@@ -8,7 +8,9 @@
   </head>
   <body>
     <h1>Signup form</h1>
-    <form>
+    <div id="error" style="color: red"></div>
+
+    <form action="/Signup/loginPage.html" method="GET" id="form">
       <input
         type="text"
         label="Username"
@@ -39,9 +41,29 @@
     </form>
 
     <script>
-      function clicked() {
-        console.log(document.getE);
-      }
+      let passwordInput = document.getElementById("password");
+      let username = document.getElementById("username");
+      let form = document.getElementById("form");
+      let email = document.getElementById("email");
+      let errorElement = document.getElementById("error");
+      let small = toLowerCase(email.value);
+
+      form.addEventListener("submit", (e) => {
+        let messages = [];
+
+        if (passwordInput.value.length < 6) {
+          messages.push(
+            "Password must be greater or equal to than 6 characters"
+          );
+          e.preventDefault();
+        }
+
+        if (messages.length > 0) {
+          e.preventDefault();
+          errorElement.innerHTML = messages.join(", ");
+        }
+        email.value = small;
+      });
     </script>
   </body>
 </html>
