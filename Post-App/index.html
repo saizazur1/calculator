@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0 50px;
+    }
+
+    .container {
+      display: flex;
+      gap: 50px;
+    }
+
+    #posts {
+      width: 400px;
+    }
+
+    i {
+      cursor: pointer;
+    }
+    #posts div {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .options {
+      display: flex;
+      gap: 25px;
+    }
+
+    #msg {
+      color: red;
+    }
+  </style>
+
+  <body>
+    <h1>Write your posts</h1>
+    <div>
+      <div>
+        <form id="form">
+          <textarea
+            label="Username"
+            placeholder="text"
+            name="text"
+            id="input"
+          ></textarea>
+          <div id="error" style="color: red"></div>
+          <button type="submit">Post</button>
+        </form>
+      </div>
+      <div>
+        <div id="posts"></div>
+      </div>
+    </div>
+    <script>
+      const form = document.getElementById("form");
+      const input = document.getElementById("input");
+      const error = document.getElementById("error");
+      const posts = document.getElementById("posts");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        console.log("Button Clicked");
+        formValidation();
+        input.value = "";
+      });
+
+      const formValidation = () => {
+        if (input.value === "") {
+          error.innerHTML = "Input cannot be empty";
+          console.log("error");
+        } else {
+          error.innerHTML = "";
+          console.log("Success");
+          acceptData();
+        }
+      };
+
+      const data = {};
+
+      const acceptData = (e) => {
+        data["text"] = input.value;
+        console.log(data);
+        createPost();
+      };
+
+      const createPost = () => {
+        posts.innerHTML += `<div>
+            <p>${data.text}</p>
+            <span class="options">
+              <i onclick="editPost(this)" class="fas fa-edit"></i>
+              <i onclick="deletePost(this)" class="fas fa-trash-alt"></i>
+            </span>
+          </div>`;
+      };
+
+      const deletePost = (e) => {
+        e.parentElement.parentElement.remove();
+      };
+
+      const editPost = (e) => {
+        input.value = e.parentElement.previousElementSibling.innerHTML;
+        e.parentElement.parentElement.remove();
+      };
+    </script>
+  </body>
+</html>
